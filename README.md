@@ -39,37 +39,36 @@ detectionizr will first try and ```require``` the commands. If that fails, it wi
 
 ## Examples
 ```javascript
-var test = require("detect");
-test.detect(["rdjpgcom", "imagemagick", "imgcheck"]);
+var test = require("../lib/detect");
 function PackageManager() {
-	this.available = [];
+    this.available = [];
 }
 PackageManager.prototype.recieve = function(name, exist) {
-	if(exist) this.available.push(name)
-	console.dir(pm);	// { available: [ 'rdjpgcom' ] }
-	console.dir(test);  /* { child_process: 
-							   { fork: [Function],
-							     _forkChild: [Function],
-							     exec: [Function],
-							     execFile: [Function],
-							     spawn: [Function] },
-							  require: [Function: r],
-							  detect: [Function],
-							  on: [Function],
-							  overwrite: [Function],
-							  rdjpgcom: true, <- command line libraries can not be referenced
-							  imagemagick: <- but nodejs modules are referenced
-							   { identify: { [Function] path: 'identify' },
-							     readMetadata: [Function],
-							     convert: { [Function] path: 'convert' },
-							     resize: [Function],
-							     crop: [Function],
-							     resizeArgs: [Function] },
-							  imgcheck: false }*/
+    if(exist) this.available.push(name)
+    console.dir(pm);    // { available: [ 'imagemagick', 'rdjpgcom' ] }
+    console.dir(test);  /* { child_process: 
+                               { fork: [Function],
+                                 _forkChild: [Function],
+                                 exec: [Function],
+                                 execFile: [Function],
+                                 spawn: [Function] },
+                              require: [Function: r],
+                              detect: [Function],
+                              on: [Function],
+                              overwrite: [Function],
+                              rdjpgcom: true, <- command line libraries can not be referenced
+                              imagemagick: <- but nodejs modules are referenced
+                               { identify: { [Function] path: 'identify' },
+                                 readMetadata: [Function],
+                                 convert: { [Function] path: 'convert' },
+                                 resize: [Function],
+                                 crop: [Function],
+                                 resizeArgs: [Function] },
+                              imgcheck: false }*/
 }
 var pm = new PackageManager();
-console.dir(pm)
 test.on("detect", pm.recieve, pm);
+test.detect(["rdjpgcom", "imagemagick", "imgcheck"]);
 ```
 
 ## TODO
@@ -80,6 +79,7 @@ test.on("detect", pm.recieve, pm);
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Test your code using [grunt](https://github.com/cowboy/grunt).
 
 ## Release History
++ 0.1.1 - Fix for event listeners not being called for nodejs modules.
 + 0.1.0 - Initial release
 
 ## License
