@@ -32,10 +32,10 @@ The listener will be called with 2 arguments, the name {String} and if it could 
 + **overwrite** ({String}, {Function}, [{Object}]) - The same as **on** but will delete all previous attached "detect" listeners.
 
 ### Eat your own dog food
-detectionizr ```child_process``` from native nodejs modules and also checks in the same manner as it will test your library dependecies. That is why, detectionizr will always have a reference to ```child_process```.
+detectionizr uses ```child_process``` from native nodejs modules and also checks in the same manner as it will test your library dependecies. That is why, detectionizr will always have a reference to ```child_process```.
 
 ### How this works
-detectionizr will first try and ```require``` the commands. If that fails, it will run the command as a process with: ```command -v [command name]``` and look for a **"/"**(slash) in the return value. The command ```command```should be available on all [POSIX](https://en.wikipedia.org/wiki/POSIX) compliant systems (OS X, Linux, Unix ect.).
+detectionizr will first try and ```require``` the commands. If that fails, it will run the command as a process with: ```command -v [command name]``` and look for a **"/"**(slash) in the return value. The command ```command```should be available on all [POSIX](https://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems) compliant systems (OS X, Linux, Unix ect.).
 
 ## Examples
 ```javascript
