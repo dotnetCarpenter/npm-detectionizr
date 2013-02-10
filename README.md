@@ -58,7 +58,13 @@ PackageManager.prototype.recieve = function(name, exist) {
 							  on: [Function],
 							  overwrite: [Function],
 							  rdjpgcom: true, <- command line libraries can not be referenced
-							  imagemagick: false,
+							  imagemagick: <- but nodejs modules are referenced
+							   { identify: { [Function] path: 'identify' },
+							     readMetadata: [Function],
+							     convert: { [Function] path: 'convert' },
+							     resize: [Function],
+							     crop: [Function],
+							     resizeArgs: [Function] },
 							  imgcheck: false }*/
 }
 var pm = new PackageManager();
