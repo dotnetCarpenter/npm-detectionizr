@@ -39,7 +39,7 @@ detectionizr will first try and ```require``` the commands. If that fails, it wi
 
 ## Examples
 ```javascript
-var test = require("../lib/detect");
+var test = require("detect");
 function PackageManager() {
     this.available = [];
 }
