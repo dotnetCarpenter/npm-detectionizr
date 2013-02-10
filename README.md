@@ -7,7 +7,7 @@ Detect npm modules and system libraries with the same ease as Modernizr. Never h
 Install the module with: `npm install detectionizr`
 
 ```javascript
-var detectionizr = require('detect');
+var detectionizr = require('detectionizr');
 detectionizr.detect(["imagemagick", "ls", "punycode"]);	// array of commands you want to test for
 
 if(detectionizr.punycode)
@@ -39,7 +39,7 @@ detectionizr will first try and ```require``` the commands. If that fails, it wi
 
 ## Examples
 ```javascript
-var test = require("detect");
+var test = require("detectionizr");
 function PackageManager() {
     this.available = [];
 }
