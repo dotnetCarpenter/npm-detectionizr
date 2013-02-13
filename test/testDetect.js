@@ -4,7 +4,7 @@ var test = require("../lib/detect");
 // be sure to attach event handler before you use detect
 test.on("detect", function(name, exist) {
   if(name === "ls" && test.ls)
-    console.log("We can use test.ls");
+    console.log("We can use ls on this computer!");
 });
 
 test.detect(["imagemagick", "ls", "punycode"]);
