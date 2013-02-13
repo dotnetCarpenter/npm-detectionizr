@@ -23,9 +23,9 @@ var detectionizr = require('../lib/detect.js');
 module.exports = {
   setUp: function(done) {
     this.commands = {
-      0: ["imagemagick", "ls", "punycode", "rdjpgcom", "imagemagick", "imgcheck"],
+      0: ["imagemagick", "command", "punycode", "rdjpgcom", "imagemagick", "imgcheck"],
       1: ["cluster", "os", "http", "punycode"],
-      2: ["cd", "which", "grep", "find", "ls"]
+      2: ["which", "command", "whereis"]
     }
     done();
   },
@@ -39,24 +39,50 @@ module.exports = {
     test.done();
   },
   detect: function(test) {
-    test.expect(1);
+    test.expect(3);
     var fn = function(){};
     var expectedObject = {
-      child_process: fn,
-      require:fn,
-      detect:fn,
-      on:fn,
-      overwrite:fn,
-      cluster:fn,
-      os:fn,
-      http:fn,
-      punycode:fn
+      0: {
+        child_process: fn,
+        require:fn,
+        detect:fn,
+        on:fn,
+        overwrite:fn,
+        imagemagick:false,
+        command:fn,
+        punycode:fn,
+        rdjpgcom:true,
+        imgcheck:false
+      },
+      1: {
+        child_process: fn,
+        require:fn,
+        detect:fn,
+        on:fn,
+        overwrite:fn,
+        cluster:fn,
+        os:fn,
+        http:fn,
+        punycode:fn
+      },
+      2: {
+        child_process: fn,
+        require:fn,
+        detect:fn,
+        on:fn,
+        overwrite:fn,
+        which:fn,
+        command:fn,
+        whereis:fn
+      }
     }
-    test.notDeepEqual(detectionizr.detect(this.commands[1]), expectedObject, this.commands[1].toString());
+    for (var detectSerie in this.commands) {
+      test.notDeepEqual(
+        detectionizr.detect(this.commands[detectSerie])
+      , expectedObject[detectSerie]
+      , this.commands[detectSerie].toString()
+      );
+    }    
     test.done();
-
-    function testProperty(name, number) {
-
-    }
   }
 };
