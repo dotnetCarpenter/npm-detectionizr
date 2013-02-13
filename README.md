@@ -98,6 +98,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 **NOTE** - If you symlink detectionizr into a another folder, e.g. ```npm link [../path/to/detectionizr]```, detectionizr will not be able to find modules in that folder's node_modules directory. This is because nodejs require function only looks in the symlinked folder and not in the folder you are working in. See [issue #4757](https://github.com/joyent/node/issues/4757).
 
 ## Release History
++ 0.1.4 - Fixed false positives on ubuntu. Bug #1
 + 0.1.3 - Added "finally" event and fixed various bugs. detectionizr is now chainable.
 + 0.1.2 - ```.detect``` now return a reference to detectionizr. Enabling the one liner.
 + 0.1.1 - Fix for event listeners not being called for nodejs modules.
