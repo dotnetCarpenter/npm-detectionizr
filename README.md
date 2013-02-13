@@ -44,7 +44,7 @@ detectionizr has 4 methods:
 + **require** ({String}) - works like the normal require, except false is returned if the module can not be found
 + **detect** ({Array}) - takes a list of command names to test and *grows* your detectionizr variable with references to the commands. Note, that command line commands will not be available right away. See below.
 + **on** ({String}, {Function}, [{Object}]) - If a command is not a node module, then the test run asynchronously, and you have to attach an event listener. In the current version, "detect" and "finally" is accepted as event name. The second argument is your callback function and the third (optional) the scope you want your callback to run in.
-The listener will be called with 2 arguments, the name {String} and if it could be found {Boolean}. Multiple event listeners can be attached. And all listeners are called for each test.
+The listener will be called with 2 arguments, the name {String} and if it could be found {Boolean}. Multiple event listeners can be attached. All "detect" listeners are called for each package you are testing.
 + **overwrite** ({String}, {Function}, [{Object}]) - The same as **on** but will delete all previous attached "detect" listeners.
 
 ### Eat your own dog food
@@ -85,7 +85,6 @@ test.on("finally", function() {
                              crop: [Function],
                              resizeArgs: [Function] },
                           imgcheck: false }*/
-/*
 });
 test.detect(["rdjpgcom", "imagemagick", "imgcheck"]);
 ```
