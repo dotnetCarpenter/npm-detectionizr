@@ -62,13 +62,15 @@ d.imagemagick ?
       console.log("grunt is here") :
       console.error("No grunt and imagemagick") 
 */
+/*
 var test = require("../lib/detect");
 var tests = ["g++","cpp","ar", "ranlib", "exiv2", "c++"];
-var numTests = tests.length;
+var numTests = tests.length +3;
 test.on("detect", function log(libname, exist) {
     numTests--;
     console.log("%s tests left", numTests)
     if(numTests === 0)
         console.dir(test);      
 });
-test.detect(tests)
+test.detect(tests)*/
+
