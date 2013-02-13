@@ -6,15 +6,15 @@ test.on("detect", function(name, exist) {
   if(name === "ls" && test.ls)
     console.log("We can use ls on this computer!");
 });
-
+// call detect with an array of commands you want to test for
 test.detect(["imagemagick", "ls", "punycode"]);
 
 if(test.punycode)
 	console.log("We can use test.punycode");
 if(test.imagemagick)
 	console.log("We can use test.imagemagick");
-
 */
+
 /*
 var test = require("../lib/detect");
 function PackageManager() {
