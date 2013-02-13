@@ -89,6 +89,29 @@ test.on("finally", function() {
 test.detect(["rdjpgcom", "imagemagick", "imgcheck"]);
 ```
 
+```javascript
+// Instead of
+var mongodb;
+try {
+    mongodb = require( 'mongodb' );
+}
+catch( e ) {
+    if ( e.code === 'MODULE_NOT_FOUND' ) {
+        // The module hasn't been found
+    }
+}
+
+// write
+if( !require('detectionizr').detect(['mongodb']).mongodb) )
+    // The module hasn't been found
+
+// or
+var mongodb = require('detectionizr').detect(['mongodb'].mongodb;
+if(!mongodb)
+  // The module hasn't been found
+// if you need to do something with mongodb later
+```
+
 ## TODO
 + Better documentation...
 + Better tests...
