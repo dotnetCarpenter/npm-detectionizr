@@ -51,7 +51,7 @@ The listener will be called with 2 arguments, the name {String} and if it could 
 detectionizr uses ```child_process``` from native nodejs modules and also checks in the same manner as it will test your library dependecies. That is why, detectionizr will always have a reference to ```child_process```.
 
 ### How this works
-detectionizr will first try and ```require``` the commands. If that fails, it will search for the command as a process with: ```command -v [command name]```, ```which``` and ```whereis``` and look for a return value. If you experience false positives, please file a bug in the [issue tracker](https://github.com/dotnetCarpenter/npm-detectionizr/issues). The command ```command``` should be available on all [POSIX](https://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems) compliant systems (OS X, Linux, Unix ect.). ```which``` and ```whereis``` should be able to find libraries like g++ ect.
+detectionizr will first try and ```require``` the commands. If that fails, it will search for the command as a process with: ```command -v [command name]``` and ```which``` and look for a return value. If you experience false positives, please file a bug in the [issue tracker](https://github.com/dotnetCarpenter/npm-detectionizr/issues). The command ```command``` should be available on all [POSIX](https://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems) compliant systems (OS X, Linux, Unix ect.). ```which``` should be able to find libraries like g++ ect.
 
 ## Examples
 ```javascript
