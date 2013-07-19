@@ -1,8 +1,7 @@
 detectionizr
 ============
 
-Detect npm modules and system libraries with the same ease as Modernizr. Never has feature detection in Node.js been so easy!
-
+Detect npm modules and system libraries with the same ease as Modernizr.
 ## Getting Started
 Install the module with: `npm install detectionizr`
 
@@ -21,7 +20,7 @@ d['html-doc'] ?                   // is html-doc available?
 
 ```javascript
 var detectionizr = require('detectionizr');
-// be sure to attach event handler before you use detect
+// be sure to attach event handler before you use detect or you could end up with a race-condition
 test.on("detect", function(name, exist) {
   if(name === "ls" && test.ls)
     console.log("We can use ls on this computer!");
@@ -50,7 +49,7 @@ The listener will be called with 2 arguments, the name {String} and if it could 
 ### Eat your own dog food
 detectionizr uses ```child_process``` from native nodejs modules and also checks in the same manner as it will test your library dependecies. That is why, detectionizr will always have a reference to ```child_process```.
 
-### How this works
+### Implementation
 detectionizr will first try and ```require``` the commands. If that fails, it will search for the command as a process with: ```command -v [command name]``` and ```which``` and look for a return value. If you experience false positives, please file a bug in the [issue tracker](https://github.com/dotnetCarpenter/npm-detectionizr/issues). The command ```command``` should be available on all [POSIX](https://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems) compliant systems (OS X, Linux, Unix ect.). ```which``` should be able to find libraries like g++ ect.
 
 ## Examples
@@ -130,5 +129,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 + 0.1.0 - Initial release
 
 ## License
-Copyright (c) 2013 [dotnetCarpenter](https://www.google.com/search?q=dotnetCarpenter)
+Created by [dotnetCarpenter](https://www.google.com/search?q=dotnetCarpenter)
 Licensed under the [WTFPL](http://www.wtfpl.net/about/) license.
