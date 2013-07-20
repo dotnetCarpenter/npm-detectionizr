@@ -1,5 +1,5 @@
 /* MANUAL TEST */
-/*
+
 var test = require("../lib/detect");
 // be sure to attach event handler before you use detect
 test.on("detect", function(name, exist) {
@@ -7,13 +7,13 @@ test.on("detect", function(name, exist) {
     console.log("We can use ls on this computer!");
 });
 // call detect with an array of commands you want to test for
-test.detect(["imagemagick", "ls", "punycode"]);
+test.detect([/*"imagemagick",*/ "dir", "punycode"]);
 
 if(test.punycode)
 	console.log("We can use test.punycode");
 if(test.imagemagick)
 	console.log("We can use test.imagemagick");
-*/
+
 
 /*
 var test = require("../lib/detect");

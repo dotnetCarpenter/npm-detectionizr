@@ -1,7 +1,7 @@
 {
   "name": "detectionizr",
   "description": "Detect npm modules and system libraries with the same ease as Modernizr",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "homepage": "https://github.com/dotnetCarpenter/npm-detectionizr",
   "author": {
     "name": "dotnetcarpenter",
@@ -26,13 +26,17 @@
   },
   "main": "lib/detect",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.3"
+    "grunt": "~0.4",
+    "grunt-contrib-nodeunit": "~0.2",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-clean": "~0.4.0"
   },
   "keywords": ["feature detection", "dependency", "is installed?", "modules"],
   "maintainers": [{
