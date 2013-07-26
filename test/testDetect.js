@@ -77,7 +77,7 @@ test.detect(tests)*/
 
 var test = require("../detect");
 test.on("detect", function log(libname, exist) {
-  console.log(libname, exist);
+  console.log("testDetect::", libname, exist);
 });
-test.detect(["foo", "bar"]);
+test.detect(["foo", "bar", "punycode"]);
 
