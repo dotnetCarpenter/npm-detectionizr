@@ -1,5 +1,5 @@
 /* MANUAL TEST */
-
+/*
 var test = require("../lib/detect");
 // be sure to attach event handler before you use detect
 test.on("detect", function(name, exist) {
@@ -7,13 +7,13 @@ test.on("detect", function(name, exist) {
     console.log("We can use ls on this computer!");
 });
 // call detect with an array of commands you want to test for
-test.detect([/*"imagemagick",*/ "dir", "punycode"]);
+test.detect(["imagemagick", "ls", "punycode"]);
 
 if(test.punycode)
 	console.log("We can use test.punycode");
 if(test.imagemagick)
 	console.log("We can use test.imagemagick");
-
+*/
 
 /*
 var test = require("../lib/detect");
@@ -55,7 +55,8 @@ var test = require("../lib/detect");
 test.detect(["cluster", "os", "http", "punycode"]);
 console.dir(test)
 */
-/*var d = require('../lib/detect').detect(['grunt', 'imagemagick'])
+/*
+var d = require('../lib/detect').detect(['grunt', 'imagemagick'])
 d.imagemagick ?                   
   console.log("imagemagick is here") :
     d['grunt'] ?
@@ -73,4 +74,10 @@ test.on("detect", function log(libname, exist) {
         console.dir(test);      
 });
 test.detect(tests)*/
+
+var test = require("../detect");
+test.on("detect", function log(libname, exist) {
+  console.log(libname, exist);
+});
+test.detect(["foo", "bar"]);
 

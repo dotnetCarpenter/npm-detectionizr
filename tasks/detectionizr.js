@@ -2,7 +2,6 @@
  * detectionizr
  * https://github.com/dotnetCarpenter/npm-detectionizr
  *
- * Copyright (c) 2013 Jon E. Ronnenberg
  * Licensed under the WTFPL license.
  */
 

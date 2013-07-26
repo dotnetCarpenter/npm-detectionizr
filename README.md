@@ -2,49 +2,55 @@ detectionizr
 ============
 
 Detect npm modules and system libraries with the same ease as Modernizr.
+
 ## Getting Started
-Install the module with: `npm install detectionizr`
+  Install the module with: `npm install detectionizr`
 
 The one liner:
 ```javascript
-var d = require('detectionizr').detect(['html-doc', 'html-md']) // that's it!
+  var d = require('detectionizr').detect(['html-doc', 'html-md']) // that's it!
 ```
 Now you could do this:
 ```javascript
-d['html-doc'] ?                   // is html-doc available?
-  d['html-doc'].parse(markdown) : // then use it
-    d['html-md'] ?                // if not, is html-md available?
-      d['html-md'].md(markdown) : // then use it
-      console.error("No markdown support")  // both d['html-doc'] and d['html-md'] are false
+  d['html-doc'] ?                   // is html-doc available?
+    d['html-doc'].parse(markdown) : // then use it
+      d['html-md'] ?                // if not, is html-md available?
+        d['html-md'].md(markdown) : // then use it
+        console.error("No markdown support")  // both d['html-doc'] and d['html-md'] are false
 ```
 
 ```javascript
-var detectionizr = require('detectionizr');
-// be sure to attach event handler before you use detect or you could end up with a race-condition
-test.on("detect", function(name, exist) {
-  if(name === "ls" && test.ls)
-    console.log("We can use ls on this computer!");
-});
-// call detect with an array of commands you want to test for
-test.detect(["imagemagick", "ls", "punycode"]);
+  var detectionizr = require('detectionizr');
+  // be sure to attach event handler before you use detect or you could end up with a race-condition
+  test.on("detect", function(name, exist) {
+    if(name === "ls" && test.ls)
+      console.log("We can use ls on this computer!");
+  });
+  // call detect with an array of commands you want to test for
+  test.detect(["imagemagick", "ls", "punycode"]);
 
-if(test.punycode)
-  console.log("We can use test.punycode");
-if(test.imagemagick)
-  console.log("We can use test.imagemagick");
+  if(test.punycode)
+    console.log("We can use test.punycode");
+  if(test.imagemagick)
+    console.log("We can use test.imagemagick");
 ```
 
 ## Documentation
-*I use command, system library and nodejs module interchangeably in this text.*
+  *I use command, system library and nodejs module interchangeably in this text. As you can detect them all the same.*
 
-**NOT TESTED ON WINDOWS**
+**On Windows you can only detect commands in your `PATH` and nodejs modules.**
 
-detectionizr has 4 methods:
-+ **require** ({String}) - works like the normal require, except false is returned if the module can not be found
-+ **detect** ({Array}) - takes a list of command names to test and *grows* your detectionizr variable with references to the commands. Note, that command line commands will not be available right away. See below.
-+ **on** ({String}, {Function}, [{Object}]) - If a command is not a node module, then the test run asynchronously, and you have to attach an event listener. In the current version, "detect" and "finally" is accepted as event name. The second argument is your callback function and the third (optional) the scope you want your callback to run in.
+### detectionizr has 5 methods:
+`require({String})` - safely require a node module. Returns false if the module can not be found
+
+`detect({Array})` - takes a list of command names to test and *grows* your detectionizr variable with references to the commands. Note, that command line commands will not be available right away. See below.
+
+`on({String}, {Function}, [{Object}])` - If a command is not a node module, then the test run asynchronously, and you have to attach an event listener. In the current version, `detect` and `finally` is accepted as event name. The second argument is your callback function and the third (optional), the scope you want your callback to run in.
 The listener will be called with 2 arguments, the name {String} and if it could be found {Boolean}. Multiple event listeners can be attached. All "detect" listeners are called for each package you are testing.
-+ **overwrite** ({String}, {Function}, [{Object}]) - The same as **on** but will delete all previous attached "detect" listeners.
+
+`off({String})` - Remove all event listensers with the supplied name.
+
+`overwrite({String}, {Function}, [{Object}])` - The same as **on** but will delete all previous attached "detect" listeners.
 
 ### Eat your own dog food
 detectionizr uses ```child_process``` from native nodejs modules and also checks in the same manner as it will test your library dependecies. That is why, detectionizr will always have a reference to ```child_process```.
