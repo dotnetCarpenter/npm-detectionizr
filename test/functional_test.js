@@ -65,3 +65,17 @@ test.deepEqual(
     return value === "odd";
   })
 );
+
+function power2(number) {
+  return Math.pow(number, 2);
+}
+function add1(number) {
+  return ++number;
+}
+function remove1(number) {
+  return --number;
+}
+var numbers = [1,2,300,4];
+var resultOfNumbers = [3, 8, 90600, 24];
+test.deepEqual(numbers.transform2(add1, power2, remove1), resultOfNumbers);
+
