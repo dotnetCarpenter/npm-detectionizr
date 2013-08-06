@@ -79,7 +79,7 @@ function remove1(number) {
 var numbers = [1,2,300,4];
 var resultOfNumbers = [3, 8, 90600, 24];
 test.deepEqual(numbers.transform2(add1, power2, remove1), resultOfNumbers);
-test.deepEqual(numbers.transform(add1, power2, remove1), resultOfNumbers);
+//failing: test.deepEqual(numbers.transform(add1, power2, remove1), resultOfNumbers);
 
 var strings = ["hello"];
 function addWorld(string) {

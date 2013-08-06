@@ -1,13 +1,13 @@
-"use strict"
-
 /*
  * detectionizr
  * https://github.com/dotnetCarpenter/npm-detectionizr
  * @author  dotnetCarpenter
- * @version 13.7.1
+ * @version 13.7.2
  * Licensed under the WTFPL license.
  */
 function Detect(config) {
+	"use strict"
+
 	var events = [];
 	var api = {};
 	var systemLibraries = [];

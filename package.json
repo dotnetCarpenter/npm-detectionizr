@@ -23,21 +23,21 @@
   ],
   "main": "index",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "devDependencies": {
-    "grunt": "~0.4",
-    "grunt-contrib-nodeunit": "~0.2",
-    "grunt-contrib-jshint": "~0.2.0",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-clean": "~0.4.0"
-  },
-  "keywords": ["feature detection", "dependency", "is installed?", "modules"],
-  "maintainers": [{
-    "name": "dotnetcarpenter",
-    "email": "jon.ronnenberg@gmail.com"
-  }]
+  "keywords": [
+    "feature detection",
+    "dependency",
+    "is installed?",
+    "search path"
+  ],
+  "maintainers": [
+    {
+      "name": "dotnetcarpenter",
+      "email": "jon.ronnenberg@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "scanfs": "~0.1.1"
+  }
 }

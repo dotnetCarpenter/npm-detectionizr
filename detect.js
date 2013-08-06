@@ -13,7 +13,7 @@ function Detect(config) {
 	var systemLibraries = [];
 	var numSysCmds = config.tests.length;
 	var numTests = 0;	// test counter
-	var api = new Event();
+	var api = new Event();	// inherite from Event
 
 	// require detectionizr module(s)
 	r(config.path[config.use]);
@@ -41,7 +41,7 @@ function Detect(config) {
 		if(!r(library)) {
 			systemLibraries.push([library, 0]);
 			//console.dir(systemLibraries, api);
-			this[c.path[c.use]](c.tests, library);
+			this[c.path[c.use]](c.tests.concat(library));
 		} else {
 			numTests--;	// reduce test counter
 			this.trigger("detect", library, true);
@@ -52,7 +52,7 @@ function Detect(config) {
 		try {
 			api[library] = require(library);
 		} catch(err) {
-			//console.warn(err.toString());
+			console.warn(err.toString());
 			api[library] = false;
 		} finally {
 			return api[library];
