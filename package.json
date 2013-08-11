@@ -39,5 +39,8 @@
   ],
   "dependencies": {
     "scanfs": "~0.1.1"
+  },
+  "scripts": {
+    "test": "jasmine-node test"
   }
 }
