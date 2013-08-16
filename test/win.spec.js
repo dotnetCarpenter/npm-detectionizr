@@ -1,5 +1,5 @@
 if (process.platform !== "win32")
-	process.exit(0); // this test is only for the Windows platform
+	process.exit(0); // this test is strictly for the Windows platform
 
 var spawn = require("child_process").spawn,
 			Win = require("../lib/win"),
@@ -27,18 +27,25 @@ describe("The win module", function() {
 		});
 	});
 
-	it("should find .exe and .bat files in each path", function(done) {
+	describe("win.detect should find .exe and .bat files in each path", function() {
 		var search = ["explorer", "regedit", "notepad", "nodevars"],
-				detections = 0;
-		win.on("detect", function(name) {
-			expect(search).toContain(name);
-			if(detections === search.length - 1)
-				done();
-			detections++;
-			expect(search.length).toBeGreaterThan(detections);
+				detections = 0,
+				win = new Win();
+
+		it("and should fire an event called 'detect'", function(done) {
+			win.on("detect", function(name) {
+				expect(search).toContain(name);
+				detections++;
+				if(detections === search.length)
+					done(); // exit
+				expect(search.length).toBeGreaterThan(detections);
+			});
 		});
-		expect(win.detect).toBeDefined();
-		win.detect(search);
+		it("and should have a 'detect' method", function() {
+			console.dir(win)
+			expect(win.detect).toBeDefined();
+			expect(win.detect(search)).not.toThrow();
+		});
 	});
 
 });

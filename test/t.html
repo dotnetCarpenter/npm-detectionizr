@@ -1,0 +1,52 @@
+<script>
+function update(object, property) {
+	return function updater(value) {
+		return object[property] = value;
+	}
+}
+
+function invoke(watch, fn) {
+	return function invoker(/* arguments */) {
+		fn(watch.apply(undefined, arguments));
+	}
+}
+
+function readData(data) {
+	return String(data);
+}
+
+function Win(api) {
+	var getPath = spawn("cmd", ["/C", "path"]);
+	getPath.stdout.on("data",
+		invoke(
+			readData,
+			invoke(
+				update(this, "path"),
+				update(this, "paths")
+			)
+		)
+	);
+}
+
+// program
+var win = new Win();
+setTimeout(function() {
+	console.log(win.path);
+	console.log(win.path.match(/(;)/g).length);
+}, 1500);
+
+
+/* dummy */
+function spawn() {
+	return {
+		stdout:
+		{
+			on: function(dummy, fn) {
+				setTimeout(function() {
+					fn("PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Common Files\Lenovo;C:\Program Files\Lenovo\Access Connections\;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\Program Files\nodejs\;C:\Users\Bruger\AppData\Roaming\npm");
+				}, 500);
+			}
+		}
+	}
+}
+</script>
